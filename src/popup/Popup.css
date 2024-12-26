@@ -1,0 +1,44 @@
+main {
+  text-align: center;
+  padding: 2rem;
+  margin: 0 auto;
+}
+
+h1 {
+  color: rgb(203, 110, 88);
+  text-transform: uppercase;
+  margin: 2rem auto;
+}
+
+img {
+  width: 100px;
+  height: auto;
+}
+
+.btn-container {
+  gap: 10px;
+}
+
+i {
+  cursor: pointer;
+}
+
+i:hover {
+  color: rgb(203, 110, 88);
+}
+
+.btn {
+  font-size: 12px !important;
+}
+
+input:focus {
+  border-color: rgb(203, 110, 88) !important;
+  box-shadow: none !important;
+}
+
+input::placeholder {
+  font-size: 10px !important;
+}
+input {
+  font-size: 10px !important;
+}
