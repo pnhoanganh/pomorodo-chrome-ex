@@ -1,17 +1,22 @@
 main {
   text-align: center;
-  padding: 2rem;
+  padding: 1.5rem;
+  padding-top: 1rem;
   margin: 0 auto;
+  width: 350px;
+  --color-success: #198754;
+  --color-danger: #dc3545;
+  --color-primary: #0d6efd;
 }
 
-h1 {
+h3 {
   color: rgb(203, 110, 88);
   text-transform: uppercase;
-  margin: 2rem auto;
+  margin: 1.5rem auto;
 }
 
 img {
-  width: 100px;
+  width: 70px;
   height: auto;
 }
 
@@ -19,12 +24,26 @@ img {
   gap: 10px;
 }
 
+.btn-success:hover {
+  background-color: transparent;
+  color: var(--color-success);
+}
+.btn-danger:hover {
+  background-color: transparent;
+  color: var(--color-danger);
+}
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--color-primary);
+}
+
 i {
   cursor: pointer;
+  color: rgba(33, 37, 41, 0.75) !important;
 }
 
 i:hover {
-  color: rgb(203, 110, 88);
+  color: rgb(203, 110, 88) !important;
 }
 
 .btn {
@@ -41,4 +60,40 @@ input::placeholder {
 }
 input {
   font-size: 10px !important;
+}
+
+.task-list {
+  max-height: 90px !important;
+  overflow-y: auto;
+}
+.task {
+  display: grid !important;
+  grid-template-columns: 90% 10%;
+}
+.task a,
+span {
+  font-size: 14px !important;
+}
+
+.task .bi:hover {
+  color: #000000 !important;
+  cursor: pointer;
+}
+
+.task-list::-webkit-scrollbar {
+  width: 20px;
+}
+
+.task-list::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.task-list::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+.task-list::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
 }
