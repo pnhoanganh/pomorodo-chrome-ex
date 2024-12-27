@@ -1,14 +1,15 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
-export default function todoList() {
-  const [taskList, setTaskList] = useState([])
+export default function TodoList() {
+  const [taskList, setTaskList] = useState(() => {
+    const savedTasks = localStorage.getItem('tasks')
+    if (savedTasks) {
+      return JSON.parse(savedTasks)
+    } else {
+      return []
+    }
+  })
   const [taskInput, setTaskInput] = useState('')
-
-  useEffect(() => {
-    const savedTasks = JSON.parse(localStorage.getItem('tasks')) || []
-    setTaskList(savedTasks)
-  }, [])
 
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(taskList))
@@ -20,7 +21,6 @@ export default function todoList() {
       alert('Please enter a task!')
       return
     }
-
     setTaskList([...taskList, trimmedTask])
     setTaskInput('')
   }
@@ -49,6 +49,7 @@ export default function todoList() {
         ></i>
       </div>
       <hr />
+
       <div className="task-list list-group py-1">
         {taskList.length === 0 ? (
           <div className="text-center text-muted">

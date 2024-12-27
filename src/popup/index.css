@@ -1,17 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Press+Start+2P&display=swap');
 
-* {
-  font-family: 'Press Start 2P', system-ui;
+:root {
   color-scheme: light dark;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    background-color: #fafafa;
-  }
+body {
+  margin: 0;
+  background-color: #242424;
+  color: #ffffff !important;
+  font-family: 'Press Start 2P', system-ui;
 }
 
-body {
-  min-width: 20rem;
-  margin: 0;
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: #fff;
+  }
+
+  .bi-gear-fill,
+  .task-list span,
+  hr {
+    color: rgba(33, 37, 41, 0.75);
+  }
 }

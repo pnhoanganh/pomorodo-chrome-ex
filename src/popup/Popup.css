@@ -37,9 +37,9 @@ img {
   color: var(--color-primary);
 }
 
-i {
+.bi-gear-fill {
   cursor: pointer;
-  color: rgba(33, 37, 41, 0.75) !important;
+  color: #abacad;
 }
 
 i:hover {
@@ -72,7 +72,7 @@ input {
 }
 .task a,
 span {
-  font-size: 14px !important;
+  font-size: 13px !important;
 }
 
 .task .bi:hover {
