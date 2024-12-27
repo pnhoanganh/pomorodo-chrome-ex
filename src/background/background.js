@@ -9,8 +9,8 @@ chrome.alarms.onAlarm.addListener((alarms) => {
     chrome.storage.local.get(['timer', 'isRunning'], (res) => {
       if (res.isRunning) {
         let timer = res.timer - 1
-        console.log(timer)
-        chrome.storage.local.set({ timer })
+        let isRunning = true
+        chrome.storage.local.set({ timer, isRunning })
       }
     })
   }
