@@ -1,5 +1,4 @@
 console.log('Background script is running')
-
 const DEFAULT_TIME = 1500
 const DEFAULT_TIME_OPTION = 25
 
@@ -12,14 +11,14 @@ chrome.alarms.onAlarm.addListener((alarm) => {
     chrome.storage.local.get(['timer', 'isRunning'], (res) => {
       if (res.isRunning) {
         let timer = res.timer - 1
-
+        console.log(timer)
         if (timer <= 0) {
           timer = 0
           chrome.storage.local.set({ isRunning: false })
 
           chrome.notifications.create('timerEnd', {
             type: 'basic',
-            iconUrl: '../../public/img/logo.png',
+            iconUrl: '../assets/logo.png',
             title: 'Pomodoro Timer',
             message: 'Time is up!',
           })

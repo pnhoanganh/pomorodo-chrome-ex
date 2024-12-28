@@ -38,3 +38,7 @@ h2 {
   color: #5d5f60b9;
   font-size: 16px;
 }
+
+.changeHour-input button {
+  cursor: pointer;
+}
