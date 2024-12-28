@@ -20,6 +20,11 @@ export const Options = () => {
     }
   }
 
+  const handleKeyPress = (e) => {
+    if (e.key == 'Enter') {
+      saveHour()
+    }
+  }
   const saveHour = () => {
     const validValue = validHour(Number(hourInput) || 25)
     setHourInput(validValue)
@@ -36,7 +41,7 @@ export const Options = () => {
   useEffect(() => {
     const savedHourValue = Number(localStorage.getItem('pomodoroHour')) || 25
 
-    if (chrome?.storage?.local) {
+    if (chrome.storage.local) {
       chrome.storage.local.get('timeOption', (res) => {
         const timeOption = res.timeOption || savedHourValue
         setHourInput(timeOption)
@@ -60,6 +65,7 @@ export const Options = () => {
           max="60"
           value={hourInput}
           onChange={handleInputChange}
+          onKeyPress={handleKeyPress}
           placeholder="Set time (1-60)"
           aria-label="Set default pomodoro time in minutes"
         />

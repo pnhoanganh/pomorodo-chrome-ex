@@ -40,6 +40,12 @@ export default function TodoList() {
           placeholder="Add your task..."
           value={taskInput}
           onChange={(e) => setTaskInput(e.target.value)}
+          onKeyPress={(e) => {
+            if (e.key == 'Enter') {
+              handleAddTask()
+              console.log('enter')
+            }
+          }}
         />
         <i
           id="task-add-btn"
