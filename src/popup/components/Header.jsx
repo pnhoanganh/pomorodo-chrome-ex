@@ -1,4 +1,4 @@
-import logo from '../../../public/img/pomorodo.png'
+import logo from '../../../public/img/logo.png'
 
 export const Header = () => (
   <>
@@ -10,7 +10,7 @@ export const Header = () => (
     >
       <i className="bi bi-gear-fill"></i>
     </a>
-    <h3 className="fs-5 mt-2 fw-medium title mb-4 lh-sm">Pomodoro Timer</h3>
+    <h3 className="fs-5 mt-2 fw-medium title mb-4 lh-sm text-uppercase">Pomodoro Timer</h3>
     <div>
       <img src={logo} alt="Pomodoro logo" />
     </div>

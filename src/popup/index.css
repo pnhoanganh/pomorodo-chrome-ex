@@ -2,11 +2,11 @@
 
 :root {
   color-scheme: light dark;
+  background-color: #242424;
 }
 
 body {
   margin: 0;
-  background-color: #242424;
   color: #ffffff !important;
   font-family: 'Press Start 2P', system-ui;
 }

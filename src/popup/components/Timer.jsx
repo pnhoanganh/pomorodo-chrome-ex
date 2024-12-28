@@ -1,46 +1,69 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 export default function Timer() {
   const [time, setTime] = useState(1500)
+  const [isRunning, setIsRunning] = useState(false)
 
   const startTimer = () => {
-    chrome.storage.local.set({ isRunning: true })
+    chrome.storage.local.set({ isRunning: true }, () => {
+      setIsRunning(true)
+    })
   }
 
   const pauseTimer = () => {
-    chrome.storage.local.set({ isRunning: false })
+    chrome.storage.local.set({ isRunning: false }, () => {
+      setIsRunning(false)
+    })
   }
 
   const resetTimer = () => {
-    chrome.storage.local.set({
-      timer: 1500,
-      isRunning: false,
-    })
-    setTime(1500)
-  }
-
-  const updateTime = () => {
-    chrome.storage.local.get(['timer'], (res) => {
-      setTime(res.timer || 1500)
+    chrome.storage.local.get(['timeOption'], (res) => {
+      const defaultTime = res.timeOption ? res.timeOption * 60 : 1500 // Convert minutes to seconds
+      chrome.storage.local.set({ timer: defaultTime, isRunning: false }, () => {
+        setTime(defaultTime)
+        setIsRunning(false)
+      })
     })
   }
 
   useEffect(() => {
-    updateTime()
+    chrome.storage.local.get(['timer', 'timeOption', 'isRunning'], (res) => {
+      const defaultTime = res.timeOption ? res.timeOption * 60 : 1500
+      const currentTime = res.timer !== undefined ? res.timer : defaultTime
+      setTime(currentTime)
+      setIsRunning(res.isRunning || false)
+    })
 
     const interval = setInterval(() => {
-      chrome.storage.local.get(['isRunning'], (res) => {
+      chrome.storage.local.get(['isRunning', 'timer'], (res) => {
         if (res.isRunning) {
-          chrome.storage.local.get(['timer'], (res) => {
-            const newTime = res.timer || 1500
-            setTime(newTime)
+          const newTime = res.timer || 1500
+          if (newTime >= 0) {
             chrome.storage.local.set({ timer: newTime })
-          })
+            setTime(newTime)
+          } else {
+            chrome.storage.local.set({ isRunning: false })
+            setIsRunning(false)
+            alert('Time is up!')
+          }
         }
       })
     }, 1000)
 
     return () => clearInterval(interval)
+  }, [])
+
+  useEffect(() => {
+    const handleStorageChange = (changes) => {
+      if (changes.timeOption) {
+        const newTimeOption = changes.timeOption.newValue * 60
+        setTime(newTimeOption)
+        chrome.storage.local.set({ timer: newTimeOption, isRunning: false })
+      }
+    }
+
+    chrome.storage.onChanged.addListener(handleStorageChange)
+    return () => chrome.storage.onChanged.removeListener(handleStorageChange)
   }, [])
 
   const formatTime = (seconds) => {

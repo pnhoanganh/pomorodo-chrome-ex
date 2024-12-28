@@ -9,14 +9,15 @@ export default defineManifest({
   version: packageData.version,
   manifest_version: 3,
   icons: {
-    16: 'img/pomorodo.png',
-    32: 'img/pomorodo.png',
-    48: 'img/pomorodo.png',
-    128: 'img/pomorodo.png',
+    16: 'img/logo.png',
+    32: 'img/logo.png',
+    48: 'img/logo.png',
+    128: 'img/logo.png',
   },
   action: {
     default_popup: 'popup.html',
-    default_icon: 'img/pomorodo.png',
+    default_icon: 'img/logo.png',
+    default_title: 'Pomodoro Timer',
   },
   options_page: 'options.html',
 
