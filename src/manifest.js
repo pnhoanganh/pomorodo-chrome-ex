@@ -25,12 +25,12 @@ export default defineManifest({
     service_worker: 'src/background/background.js',
     type: 'module',
   },
-  content_scripts: [
-    {
-      matches: ['http://*/*', 'https://*/*'],
-      js: ['src/contentScript/contentScript.js'],
-    },
-  ],
+  // content_scripts: [
+  //   {
+  //     matches: ['http://*/*', 'https://*/*'],
+  //     js: ['src/contentScript/contentScript.js'],
+  //   },
+  // ],
 
   permissions: ['alarms', 'storage', 'notifications'],
 })

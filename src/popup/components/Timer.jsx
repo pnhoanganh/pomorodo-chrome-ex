@@ -18,7 +18,7 @@ export default function Timer() {
 
   const resetTimer = () => {
     chrome.storage.local.get(['timeOption'], (res) => {
-      const defaultTime = res.timeOption ? res.timeOption * 60 : 1500 // Convert minutes to seconds
+      const defaultTime = res.timeOption ? res.timeOption * 60 : 1500
       chrome.storage.local.set({ timer: defaultTime, isRunning: false }, () => {
         setTime(defaultTime)
         setIsRunning(false)
@@ -72,6 +72,10 @@ export default function Timer() {
     return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`
   }
 
+  // const testing = () => {
+
+  // }
+
   return (
     <>
       <h3 className="mt-4 fw-semibold">{formatTime(time)}</h3>
@@ -85,6 +89,9 @@ export default function Timer() {
         <button onClick={resetTimer} className="btn btn-primary btn-sm lh-sm">
           Reset
         </button>
+        {/* <button onClick={testing} className="btn btn-secondary btn-sm lh-sm">
+          Test
+        </button> */}
       </div>
     </>
   )
