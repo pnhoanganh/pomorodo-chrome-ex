@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import './Options.css'
+import BtnSound from '../../public/audio/Pomodoro_button-sound.mp3'
 
 export const Options = () => {
+  const btnSound = new Audio(BtnSound)
   const [hourInput, setHourInput] = useState(25)
 
   const validHour = (value) => {
@@ -27,6 +29,7 @@ export const Options = () => {
   }
   const saveHour = () => {
     const validValue = validHour(Number(hourInput) || 25)
+    btnSound.play()
     setHourInput(validValue)
     localStorage.setItem('pomodoroHour', validValue)
 

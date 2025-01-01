@@ -25,6 +25,9 @@ export default defineManifest({
     service_worker: 'src/background/background.js',
     type: 'module',
   },
+  side_panel: {
+    default_path: 'sidepanel.html',
+  },
   // content_scripts: [
   //   {
   //     matches: ['http://*/*', 'https://*/*'],
@@ -32,5 +35,5 @@ export default defineManifest({
   //   },
   // ],
 
-  permissions: ['alarms', 'storage', 'notifications'],
+  permissions: ['alarms', 'storage', 'notifications', 'sidePanel'],
 })

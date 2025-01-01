@@ -43,7 +43,6 @@ export default function TodoList() {
           onKeyPress={(e) => {
             if (e.key == 'Enter') {
               handleAddTask()
-              console.log('enter')
             }
           }}
         />

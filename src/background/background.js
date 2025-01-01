@@ -16,7 +16,7 @@ chrome.alarms.onAlarm.addListener((alarm) => {
           timer = 0
           chrome.notifications.create('timerEnd' + Math.floor(Math.random() * 100), {
             type: 'basic',
-            iconUrl: 'icons/32.png',
+            iconUrl: 'icons/96.png',
             title: 'Pomodoro Timer',
             message: 'Time is up!',
           })

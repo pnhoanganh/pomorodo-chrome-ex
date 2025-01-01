@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from 'react'
+import BtnSound from '../../../public/audio/Pomodoro_button-sound.mp3'
 
 export default function Timer() {
+  const btnSound = new Audio(BtnSound)
   const [time, setTime] = useState(1500)
   const [isRunning, setIsRunning] = useState(false)
 
   const startTimer = () => {
+    btnSound.play()
     chrome.storage.local.set({ isRunning: true }, () => {
       setIsRunning(true)
     })
   }
 
   const pauseTimer = () => {
+    btnSound.play()
     chrome.storage.local.set({ isRunning: false }, () => {
       setIsRunning(false)
     })
   }
 
   const resetTimer = () => {
+    btnSound.play()
     chrome.storage.local.get(['timeOption'], (res) => {
       const defaultTime = res.timeOption ? res.timeOption * 60 : 1500
       chrome.storage.local.set({ timer: defaultTime, isRunning: false }, () => {
@@ -44,7 +49,6 @@ export default function Timer() {
           } else {
             chrome.storage.local.set({ isRunning: false })
             setIsRunning(false)
-            alert('Time is up!')
           }
         }
       })
@@ -72,10 +76,6 @@ export default function Timer() {
     return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`
   }
 
-  // const testing = () => {
-
-  // }
-
   return (
     <>
       <h3 className="mt-4 fw-semibold">{formatTime(time)}</h3>
@@ -89,9 +89,6 @@ export default function Timer() {
         <button onClick={resetTimer} className="btn btn-primary btn-sm lh-sm">
           Reset
         </button>
-        {/* <button onClick={testing} className="btn btn-secondary btn-sm lh-sm">
-          Test
-        </button> */}
       </div>
     </>
   )
