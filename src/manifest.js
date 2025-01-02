@@ -9,14 +9,15 @@ export default defineManifest({
   version: packageData.version,
   manifest_version: 3,
   icons: {
-    16: 'img/logo.png',
-    32: 'img/logo.png',
-    48: 'img/logo.png',
-    128: 'img/logo.png',
+    16: 'icons/16.png',
+    32: 'icons/32.png',
+    96: 'icons/96.png',
+    128: 'icons/128.png',
+    196: 'icons/196.png',
   },
   action: {
     default_popup: 'popup.html',
-    default_icon: 'img/logo.png',
+    default_icon: 'icons/32.png',
     default_title: 'Pomodoro Timer',
   },
   options_page: 'options.html',
@@ -28,6 +29,21 @@ export default defineManifest({
   side_panel: {
     default_path: 'sidepanel.html',
   },
+  web_accessible_resources: [
+    {
+      resources: [
+        'audio/Pomodoro_break.mp3',
+        'audio/Pomodoro_button-sound.mp3',
+        'audio/tick.wav',
+        'icons/16.png',
+        'icons/32.png',
+        'icons/96.png',
+        'icons/128.png',
+        'icons/196.png',
+      ],
+      matches: ['<all_urls>'],
+    },
+  ],
   // content_scripts: [
   //   {
   //     matches: ['http://*/*', 'https://*/*'],
@@ -35,5 +51,6 @@ export default defineManifest({
   //   },
   // ],
 
-  permissions: ['alarms', 'storage', 'notifications', 'sidePanel'],
+  permissions: ['alarms', 'storage', 'notifications', 'sidePanel', 'tabs'],
+  host_permissions: ['*://*/*'],
 })
