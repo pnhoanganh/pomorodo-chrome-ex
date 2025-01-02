@@ -8,17 +8,18 @@ main {
   --color-danger: #dc3545;
   --color-primary: #0d6efd;
 }
-
-h3 {
-  color: rgb(203, 110, 88);
-  margin: 1.5rem auto;
-}
-
 img {
   width: 70px;
   height: auto;
 }
-
+.bi-gear-fill {
+  cursor: pointer;
+  color: #abacad;
+}
+h3 {
+  color: rgb(203, 110, 88);
+  margin: 1.5rem auto;
+}
 .btn-container {
   gap: 10px;
 }
@@ -34,11 +35,6 @@ img {
 .btn-primary:hover {
   background-color: transparent;
   color: var(--color-primary);
-}
-
-.bi-gear-fill {
-  cursor: pointer;
-  color: #abacad;
 }
 
 i:hover {

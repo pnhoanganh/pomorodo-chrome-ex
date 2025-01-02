@@ -20,6 +20,7 @@ chrome.alarms.onAlarm.addListener((alarm) => {
             title: 'Pomodoro Timer',
             message: 'Time is up!',
           })
+          chrome.runtime.sendMessage({ action: 'testSound' })
           chrome.storage.local.set({ isRunning: false })
         }
         chrome.storage.local.set({ timer })
@@ -29,13 +30,20 @@ chrome.alarms.onAlarm.addListener((alarm) => {
 })
 
 function initializeDefaults() {
-  chrome.storage.local.get(['timer', 'isRunning', 'timeOption'], (res) => {
+  chrome.storage.local.get(['timer', 'isRunning', 'timeOption', 'breakFlag'], (res) => {
     chrome.storage.local.set({
       timer: 'timer' in res ? res.timer : DEFAULT_TIME,
       timeOption: 'timeOption' in res ? res.timeOption : DEFAULT_TIME_OPTION,
       isRunning: 'isRunning' in res ? res.isRunning : false,
+      breakFlag: 'breakFlag' in res ? res.breakFlag : true,
     })
   })
 }
 
 initializeDefaults()
+
+// chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+//   if (request.action === 'test') {
+//     sendResponse(chrome.runtime.sendMessage({ action: 'testSound' }))
+//   }
+// })

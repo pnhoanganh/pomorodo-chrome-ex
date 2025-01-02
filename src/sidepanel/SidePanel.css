@@ -1,27 +1,30 @@
-@media (prefers-color-scheme: light) {
-  a:hover {
-    color: #61dafb;
-  }
-}
-
 main {
   text-align: center;
-  padding: 1em;
+  padding: 1.5rem;
+  padding-top: 1rem;
   margin: 0 auto;
+  height: 100%;
+  --color-success: #198754;
+  --color-danger: #dc3545;
+  --color-primary: #0d6efd;
+  background-color: #fafafa !important;
 }
 
 h3 {
-  color: #61dafb;
-  text-transform: uppercase;
-  font-size: 1.5rem;
-  font-weight: 200;
-  line-height: 1.2rem;
-  margin: 2rem auto;
+  color: rgb(203, 110, 88) !important;
+  margin: 1.5rem auto;
 }
 
-a {
-  font-size: 0.5rem;
-  margin: 0.5rem;
-  color: #cccccc;
-  text-decoration: none;
+img {
+  width: 70px;
+  height: auto;
+}
+
+.bi-gear-fill {
+  cursor: pointer;
+  color: rgba(33, 37, 41, 0.75);
+}
+
+i:hover {
+  color: rgb(203, 110, 88) !important;
 }
