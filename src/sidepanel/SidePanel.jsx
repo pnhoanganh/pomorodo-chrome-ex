@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import Header from '../popup/components/Header/Header'
+import Header from './components/SideHeader/Header'
 import SideTimer from './components/SideTimer/SideTimer'
 import ToDoList from './components/SideTasksList/ToDoList'
 import './SidePanel.css'
