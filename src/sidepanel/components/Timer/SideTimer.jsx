@@ -56,7 +56,7 @@ export default function SideTimer() {
   return (
     <div>
       <h3 className="mt-4 fw-semibold fs-4">{formatTime(time)}</h3>
-      <p className="mt-4" style={{ fontSize: '15px', color: '#5d5f60b9' }}>
+      <p className="mt-3" style={{ fontSize: '12px', color: '#5d5f60b9' }}>
         Status: {isRunning ? 'Running' : 'Paused'}
       </p>
     </div>

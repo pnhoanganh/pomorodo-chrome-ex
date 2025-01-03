@@ -1,0 +1,39 @@
+hr {
+  color: rgb(87, 91, 93) !important;
+}
+
+.task-list {
+  max-height: 165px !important;
+  overflow-y: auto;
+}
+.task {
+  display: grid !important;
+  grid-template-columns: 90% 10%;
+}
+.task a,
+span {
+  font-size: 13px !important;
+}
+
+.task .bi:hover {
+  color: #000000 !important;
+  cursor: pointer;
+}
+
+.task-list::-webkit-scrollbar {
+  width: 20px;
+}
+
+.task-list::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.task-list::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+.task-list::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}

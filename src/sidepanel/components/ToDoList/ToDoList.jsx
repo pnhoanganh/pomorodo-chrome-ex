@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import { useState, useEffect } from 'react'
+import './ToDoList.css'
 
-export default function TodoList() {
+export default function ToDoList() {
   const [taskList, setTaskList] = useState([])
-  const [taskInput, setTaskInput] = useState('')
 
   useEffect(() => {
     chrome.storage.local.get(['tasks'], (res) => {
@@ -21,48 +22,16 @@ export default function TodoList() {
     }
   }, [])
 
-  const handleAddTask = () => {
-    const trimmedTask = taskInput.trim()
-    if (trimmedTask.length === 0) {
-      alert('Please enter a task!')
-      return
-    }
-    const updatedTasks = [...taskList, trimmedTask]
-    setTaskList(updatedTasks)
-    chrome.storage.local.set({ tasks: updatedTasks })
-    setTaskInput('')
-  }
-
   const handleDeleteTask = (index) => {
     const updatedTasks = taskList.filter((_, i) => i !== index)
     setTaskList(updatedTasks)
     chrome.storage.local.set({ tasks: updatedTasks })
   }
-
   return (
     <>
-      <div className="input-group input-group-lg mt-4">
-        <input
-          id="task-input"
-          type="text"
-          className="form-control"
-          placeholder="Add your task..."
-          value={taskInput}
-          onChange={(e) => setTaskInput(e.target.value)}
-          onKeyPress={(e) => {
-            if (e.key === 'Enter') {
-              handleAddTask()
-            }
-          }}
-        />
-        <i
-          id="task-add-btn"
-          className="bi bi-plus-circle-fill input-group-text"
-          onClick={handleAddTask}
-          style={{ cursor: 'pointer' }}
-        ></i>
-      </div>
-
+      <h3 className=" mt-4" style={{ fontSize: '20px' }}>
+        To Do List
+      </h3>
       <hr />
 
       <div className="task-list list-group py-1">
