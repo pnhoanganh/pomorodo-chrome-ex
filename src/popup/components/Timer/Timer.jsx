@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import BtnSound from '../../../public/audio/Pomodoro_button-sound.mp3'
-import BreakSound from '../../../public/audio/Pomodoro_break.mp3'
+import BtnSound from '../../../../public/audio/Pomodoro_button-sound.mp3'
+import BreakSound from '../../../../public/audio/Pomodoro_break.mp3'
+import './Timer.css'
 
 export default function Timer() {
   const btnSound = new Audio(BtnSound)

@@ -1,0 +1,12 @@
+img {
+  width: 70px;
+  height: auto;
+}
+.bi-gear-fill {
+  cursor: pointer;
+  color: #abacad;
+}
+h3 {
+  color: rgb(203, 110, 88);
+  margin: 1.5rem auto;
+}

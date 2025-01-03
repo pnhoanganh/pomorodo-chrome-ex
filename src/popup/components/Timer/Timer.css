@@ -1,0 +1,19 @@
+.btn-container {
+  gap: 10px;
+}
+
+.btn-success:hover {
+  background-color: transparent;
+  color: var(--color-success);
+}
+.btn-danger:hover {
+  background-color: transparent;
+  color: var(--color-danger);
+}
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--color-primary);
+}
+.btn {
+  font-size: 12px !important;
+}
