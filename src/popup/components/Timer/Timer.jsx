@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import BtnSound from '../../../../public/audio/Pomodoro_button-sound.mp3'
-import BreakSound from '../../../../public/audio/Pomodoro_break.mp3'
+import BtnSound from '../../../assets/audio/Pomodoro_button-sound.mp3'
+import BreakSound from '../../../assets/audio/Pomodoro_break.mp3'
 import './Timer.css'
 
 export default function Timer() {
@@ -81,24 +81,25 @@ export default function Timer() {
     return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`
   }
 
-  useEffect(() => {
-    chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-      if (request.action === 'testSound') {
-        console.log('testSound')
-        breakSound.play()
-      }
-    })
-  }, [])
-
-  // const test = () => {
-  //   chrome.runtime.sendMessage({ action: 'test' })
+  // useEffect(() => {
   //   chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   //     if (request.action === 'testSound') {
   //       console.log('testSound')
   //       breakSound.play()
   //     }
   //   })
-  // }
+  // }, [])
+
+  chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.action === 'testSound') {
+      console.log('testSound')
+      breakSound.play()
+    }
+  })
+
+  const test = () => {
+    chrome.runtime.sendMessage({ action: 'test' })
+  }
 
   return (
     <>
@@ -113,9 +114,9 @@ export default function Timer() {
         <button onClick={resetTimer} className="btn btn-primary btn-sm lh-sm">
           Reset
         </button>
-        {/* <button onClick={test} className="btn btn-primary btn-sm lh-sm">
+        <button onClick={test} className="btn btn-primary btn-sm lh-sm">
           Test
-        </button> */}
+        </button>
       </div>
     </>
   )

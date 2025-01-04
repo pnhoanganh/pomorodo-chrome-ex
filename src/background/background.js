@@ -44,6 +44,8 @@ initializeDefaults()
 
 // chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 //   if (request.action === 'test') {
-//     sendResponse(chrome.runtime.sendMessage({ action: 'testSound' }))
+//     chrome.runtime.sendMessage({ action: 'testSound' })
+//     sendResponse({ status: 'sent' })
 //   }
+//   return true
 // })

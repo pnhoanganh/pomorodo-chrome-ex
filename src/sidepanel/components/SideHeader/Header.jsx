@@ -1,4 +1,4 @@
-import logo from '../../../../public/img/logo.png'
+import logo from '../../../assets/img/logo.png'
 import './Header.css'
 export const Header = () => (
   <>
