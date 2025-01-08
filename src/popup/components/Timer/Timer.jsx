@@ -97,13 +97,18 @@ export default function Timer() {
     }
   })
 
-  const test = () => {
-    chrome.runtime.sendMessage({ action: 'test' })
-  }
+  // const test = () => {
+  //   chrome.runtime.sendMessage({ action: 'test' })
+  // }
 
   return (
     <>
       <h3 className="mt-4 fw-semibold">{formatTime(time)}</h3>
+      <div className=" d-flex justify-content-center">
+        <a target="_blank" href="/popup.html" className="btn btn-primary mb-3">
+          Open
+        </a>
+      </div>
       <div className="btn-container d-flex justify-content-evenly">
         <button onClick={startTimer} className="btn btn-success btn-sm lh-sm">
           Start
@@ -114,9 +119,9 @@ export default function Timer() {
         <button onClick={resetTimer} className="btn btn-primary btn-sm lh-sm">
           Reset
         </button>
-        <button onClick={test} className="btn btn-primary btn-sm lh-sm">
+        {/* <button onClick={test} className="btn btn-secondary btn-sm lh-sm">
           Test
-        </button>
+        </button> */}
       </div>
     </>
   )
