@@ -13,19 +13,12 @@ body {
 
 @media (prefers-color-scheme: light) {
   body {
-    background-color: #fff;
+    background-color: #fafafa;
   }
 
   .bi-gear-fill,
   .task-list span,
   hr {
     color: rgba(33, 37, 41, 0.75);
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  /* For desktop: */
-  body {
-    min-height: 100vh;
   }
 }

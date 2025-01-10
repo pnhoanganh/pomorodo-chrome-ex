@@ -1,9 +1,10 @@
 main {
   text-align: center;
-  padding: 1.5rem;
+  padding: 250px;
   padding-top: 1rem;
   margin: 0 auto;
-  width: 350px;
+  min-height: 100vh;
+  min-width: 550px;
   --color-success: #198754;
   --color-danger: #dc3545;
   --color-primary: #0d6efd;
