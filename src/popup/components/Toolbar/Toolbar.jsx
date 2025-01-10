@@ -18,16 +18,17 @@ function Toolbar() {
   }, [location])
 
   return (
-    <div id="toolbar" className="d-flex mb-4 p-2 rounded justify-content-between">
+    <div id="toolbar">
       {tabs.map((tab) => (
-        <Link
+        <a
           key={tab.id}
-          to={tab.path}
-          aria-current={activeTab === tab.id ? 'page' : undefined}
+          href={`/popup.html#${tab.path}`}
+          target="_blank"
+          rel="noopener noreferrer"
           className={`btn ${activeTab === tab.id ? 'active-tab' : 'inactive-tab'}`}
         >
           {tab.label}
-        </Link>
+        </a>
       ))}
     </div>
   )

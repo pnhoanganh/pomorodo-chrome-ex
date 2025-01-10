@@ -104,11 +104,6 @@ export default function Timer() {
   return (
     <>
       <h3 className="mt-4 fw-semibold">{formatTime(time)}</h3>
-      <div className=" d-flex justify-content-center">
-        <a target="_blank" href="/popup.html" className="btn btn-primary mb-3">
-          Open
-        </a>
-      </div>
       <div className="btn-container d-flex justify-content-evenly">
         <button onClick={startTimer} className="btn btn-success btn-sm lh-sm">
           Start
