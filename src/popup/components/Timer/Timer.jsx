@@ -102,22 +102,25 @@ export default function Timer() {
   // }
 
   return (
-    <>
-      <h3 className="mt-4 fw-semibold">{formatTime(time)}</h3>
-      <div className="btn-container d-flex justify-content-evenly">
-        <button onClick={startTimer} className="btn btn-success btn-sm lh-sm">
+    <section>
+      <p className="mt-3" style={{ fontSize: '12px', color: '#5d5f60b9' }}>
+        Status: {isRunning ? 'Running' : 'Paused'}
+      </p>
+      <h3 className="mb-4 fw-semibold">{formatTime(time)}</h3>
+      <div className="btn-container d-flex justify-content-center">
+        <button onClick={startTimer} className="btn btn-success lh-sm">
           Start
         </button>
-        <button onClick={pauseTimer} className="btn btn-danger btn-sm lh-sm">
+        <button onClick={pauseTimer} className="btn btn-danger lh-sm">
           Pause
         </button>
-        <button onClick={resetTimer} className="btn btn-primary btn-sm lh-sm">
+        <button onClick={resetTimer} className="btn btn-primary lh-sm">
           Reset
         </button>
         {/* <button onClick={test} className="btn btn-secondary btn-sm lh-sm">
           Test
         </button> */}
       </div>
-    </>
+    </section>
   )
 }

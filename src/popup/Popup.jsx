@@ -25,13 +25,13 @@ export const Popup = () => {
             </a>
           </div>
 
-          <h3 className="mt-3 fw-medium title mb-5 lh-sm text-uppercase">Pomodoro Timer</h3>
+          <h3 className="fw-medium title text-uppercase">Pomodoro Timer</h3>
           <div className="d-flex flex-column align-items-center">
             <Toolbar />
           </div>
         </header>
-
-        <div className="content">
+        <hr />
+        <div className="content mt-4">
           <Switch>
             <Route exact path="/timer" component={Timer} />
             <Route exact path="/task" component={Task} />

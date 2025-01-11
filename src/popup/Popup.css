@@ -1,10 +1,9 @@
 main {
   text-align: center;
-  padding: 250px;
-  padding-top: 1rem;
-  margin: 0 auto;
   min-height: 100vh;
-  min-width: 550px;
+  padding: 2rem 2rem 5rem 2rem;
+  margin: 0 auto;
+  width: 450px;
   --color-success: #198754;
   --color-danger: #dc3545;
   --color-primary: #0d6efd;
@@ -22,8 +21,20 @@ img {
   cursor: pointer;
   color: #abacad;
 }
-h3 {
+header h3 {
   color: rgb(203, 110, 88);
-  margin: 1.5rem auto;
-  font-size: 25px !important;
+  margin: 1.5rem 0 2rem 0;
+  font-size: 25px;
+}
+
+@media (min-width: 992px) {
+  main {
+    width: 650px;
+  }
+  header h3 {
+    font-size: 30px;
+  }
+  .btn-container {
+    gap: 30px;
+  }
 }

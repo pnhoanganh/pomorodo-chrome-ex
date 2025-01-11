@@ -20,7 +20,7 @@ chrome.alarms.onAlarm.addListener((alarm) => {
             title: 'Pomodoro Timer',
             message: 'Time is up!',
           })
-          chrome.runtime.sendMessage({ action: 'testSound' })
+          // chrome.runtime.sendMessage({ action: 'testSound' })
           chrome.storage.local.set({ isRunning: false })
         }
         chrome.storage.local.set({ timer })
