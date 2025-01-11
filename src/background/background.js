@@ -10,20 +10,19 @@ chrome.alarms.onAlarm.addListener((alarm) => {
   if (alarm.name === 'pomodoroTimer') {
     chrome.storage.local.get(['timer', 'isRunning'], (res) => {
       if (res.isRunning) {
-        let timer = res.timer - 1
-        console.log(timer)
-        if (timer <= 0) {
-          timer = 0
+        const newTime = (res.timer || 1500) - 1
+        if (newTime <= 0) {
+          chrome.storage.local.set({ timer: 0, isRunning: false })
+          chrome.runtime.sendMessage({ action: 'timerEnd' })
           chrome.notifications.create('timerEnd' + Math.floor(Math.random() * 100), {
             type: 'basic',
             iconUrl: 'icons/96.png',
             title: 'Pomodoro Timer',
             message: 'Time is up!',
           })
-          // chrome.runtime.sendMessage({ action: 'testSound' })
-          chrome.storage.local.set({ isRunning: false })
+        } else {
+          chrome.storage.local.set({ timer: newTime })
         }
-        chrome.storage.local.set({ timer })
       }
     })
   }

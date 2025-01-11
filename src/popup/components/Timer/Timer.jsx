@@ -11,68 +11,47 @@ export default function Timer() {
 
   const startTimer = () => {
     btnSound.play()
-    chrome.storage.local.set({ isRunning: true }, () => {
-      setIsRunning(true)
-    })
+    chrome.storage.local.set({ isRunning: true })
   }
 
   const pauseTimer = () => {
     btnSound.play()
-    chrome.storage.local.set({ isRunning: false }, () => {
-      setIsRunning(false)
-    })
+    chrome.storage.local.set({ isRunning: false })
   }
 
   const resetTimer = () => {
     btnSound.play()
     chrome.storage.local.get(['timeOption'], (res) => {
       const defaultTime = res.timeOption ? res.timeOption * 60 : 1500
-      chrome.storage.local.set({ timer: defaultTime, isRunning: false }, () => {
-        setTime(defaultTime)
-        setIsRunning(false)
-
-        chrome.runtime.sendMessage({ action: 'resetTimer' })
-      })
+      chrome.storage.local.set({ timer: defaultTime, isRunning: false })
     })
   }
 
   useEffect(() => {
-    chrome.storage.local.get(['timer', 'timeOption', 'isRunning'], (res) => {
-      const defaultTime = res.timeOption ? res.timeOption * 60 : 1500
-      const currentTime = res.timer !== undefined ? res.timer : defaultTime
-      setTime(currentTime)
+    chrome.storage.local.get(['timer', 'isRunning'], (res) => {
+      setTime(res.timer || 1500)
       setIsRunning(res.isRunning || false)
     })
 
-    const interval = setInterval(() => {
-      chrome.storage.local.get(['isRunning', 'timer'], (res) => {
-        if (res.isRunning) {
-          const newTime = res.timer || 1500
-          if (newTime >= 0) {
-            chrome.storage.local.set({ timer: newTime })
-            setTime(newTime)
-          } else {
-            chrome.storage.local.set({ isRunning: false })
-            setIsRunning(false)
-          }
-        }
-      })
-    }, 1000)
-
-    return () => clearInterval(interval)
-  }, [])
-
-  useEffect(() => {
     const handleStorageChange = (changes) => {
-      if (changes.timeOption) {
-        const newTimeOption = changes.timeOption.newValue * 60
-        setTime(newTimeOption)
-        chrome.storage.local.set({ timer: newTimeOption, isRunning: false })
+      if (changes.timer) {
+        setTime(changes.timer.newValue)
+      }
+      if (changes.isRunning) {
+        setIsRunning(changes.isRunning.newValue)
       }
     }
 
     chrome.storage.onChanged.addListener(handleStorageChange)
     return () => chrome.storage.onChanged.removeListener(handleStorageChange)
+  }, [])
+
+  useEffect(() => {
+    chrome.runtime.onMessage.addListener((message) => {
+      if (message.action === 'timerEnd') {
+        breakSound.play()
+      }
+    })
   }, [])
 
   const formatTime = (seconds) => {
@@ -81,24 +60,8 @@ export default function Timer() {
     return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`
   }
 
-  // useEffect(() => {
-  //   chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  //     if (request.action === 'testSound') {
-  //       console.log('testSound')
-  //       breakSound.play()
-  //     }
-  //   })
-  // }, [])
-
-  chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if (request.action === 'testSound') {
-      console.log('testSound')
-      breakSound.play()
-    }
-  })
-
   // const test = () => {
-  //   chrome.runtime.sendMessage({ action: 'test' })
+  //   breakSound.play()
   // }
 
   return (
