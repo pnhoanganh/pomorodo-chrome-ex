@@ -11,6 +11,7 @@ chrome.alarms.onAlarm.addListener((alarm) => {
     chrome.storage.local.get(['timer', 'isRunning'], (res) => {
       if (res.isRunning) {
         const newTime = (res.timer || 1500) - 1
+        chrome.runtime.sendMessage({ action: 'secondSound' })
         if (newTime <= 0) {
           chrome.storage.local.set({ timer: 0, isRunning: false })
           chrome.runtime.sendMessage({ action: 'timerEnd' })

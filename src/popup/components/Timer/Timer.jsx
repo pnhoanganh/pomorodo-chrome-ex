@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import BtnSound from '../../../assets/audio/Pomodoro_button-sound.mp3'
 import BreakSound from '../../../assets/audio/Pomodoro_break.mp3'
+import SecondSound from '../../../assets/audio/tick.wav'
 import './Timer.css'
 
 export default function Timer() {
   const btnSound = new Audio(BtnSound)
   const breakSound = new Audio(BreakSound)
+  const secondSound = new Audio(SecondSound)
   const [time, setTime] = useState(1500)
   const [isRunning, setIsRunning] = useState(false)
 
@@ -50,6 +52,8 @@ export default function Timer() {
     chrome.runtime.onMessage.addListener((message) => {
       if (message.action === 'timerEnd') {
         breakSound.play()
+      } else if (message.action === 'secondSound') {
+        secondSound.play()
       }
     })
   }, [])

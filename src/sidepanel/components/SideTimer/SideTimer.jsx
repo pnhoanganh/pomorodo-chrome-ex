@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import SecondSound from '../../../assets/audio/tick.wav'
 import './SideTimer.css'
 
 export default function SideTimer() {
+  const secondSound = new Audio(SecondSound)
   const [time, setTime] = useState(1500)
   const [isRunning, setIsRunning] = useState(false)
 
@@ -15,6 +17,7 @@ export default function SideTimer() {
     // Listen change from storage
     const handleStorageChange = (changes) => {
       if (changes.timer) {
+        secondSound.play()
         setTime(changes.timer.newValue)
       }
       if (changes.isRunning) {
