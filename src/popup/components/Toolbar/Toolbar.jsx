@@ -5,7 +5,6 @@ import './Toolbar.css'
 const tabs = [
   { id: 'timer', label: 'Timer', path: '/timer' },
   { id: 'task', label: 'To do list', path: '/task' },
-  { id: 'note', label: 'Take note', path: '/note' },
 ]
 
 function Toolbar() {

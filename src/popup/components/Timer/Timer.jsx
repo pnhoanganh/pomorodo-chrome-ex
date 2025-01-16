@@ -63,14 +63,9 @@ export default function Timer() {
     const secs = seconds % 60
     return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`
   }
-
-  // const test = () => {
-  //   breakSound.play()
-  // }
-
   return (
     <section>
-      <p className="mt-3" style={{ fontSize: '12px', color: '#5d5f60b9' }}>
+      <p style={{ fontSize: '12px', color: '#5d5f60b9' }}>
         Status: {isRunning ? 'Running' : 'Paused'}
       </p>
       <h3 className="mb-4 fw-semibold">{formatTime(time)}</h3>
@@ -84,9 +79,6 @@ export default function Timer() {
         <button onClick={resetTimer} className="btn btn-primary lh-sm">
           Reset
         </button>
-        {/* <button onClick={test} className="btn btn-secondary btn-sm lh-sm">
-          Test
-        </button> */}
       </div>
     </section>
   )

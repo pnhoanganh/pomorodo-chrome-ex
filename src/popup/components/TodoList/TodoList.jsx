@@ -41,7 +41,7 @@ export default function TodoList() {
   }
 
   return (
-    <section>
+    <section className="todolist-section">
       <h3 className="mb-4 fw-semibold fs-5">Tasks archive</h3>
       <div className="input-group input-group-lg mt-4">
         <input

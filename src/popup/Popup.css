@@ -3,7 +3,7 @@ main {
   min-height: 100vh;
   padding: 2rem 2rem 5rem 2rem;
   margin: 0 auto;
-  width: 450px;
+  width: 400px;
   --color-success: #198754;
   --color-danger: #dc3545;
   --color-primary: #0d6efd;
@@ -29,7 +29,7 @@ header h3 {
 
 @media (min-width: 992px) {
   main {
-    width: 650px;
+    width: 760px;
   }
   header h3 {
     font-size: 30px;

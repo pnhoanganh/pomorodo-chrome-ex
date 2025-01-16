@@ -31,11 +31,10 @@ export const Popup = () => {
           </div>
         </header>
         <hr />
-        <div className="content mt-4">
+        <div className="content mt-4 d-flex justify-content-center align-items-center">
           <Switch>
             <Route exact path="/timer" component={Timer} />
             <Route exact path="/task" component={Task} />
-            {/* <Route exact path="/note" component={Note} /> */}
             <Redirect to="/timer" />
           </Switch>
         </div>
